@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* form */
+@layer components{
+    .button-submit{
+     @apply w-full p-2 rounded-md bg-orange-500 mt-2 font-bold text-white;
+    }
+    .default-input{
+        @apply border border-gray-600  px-5 py-1 rounded
+    }
+}
+
+/* settings */
+@layer utilities{
+    .grid-center{
+        @apply grid place-items-center
+    }
+}
+
+/* table */
+@layer components{
+    .table-header{
+        @apply px-4 py-3.5 text-sm font-normal text-center capitalize text-gray-500 dark:text-gray-400
+    }
+    .button__prev__table{
+        @apply flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100
+    }
+}

@@ -1,0 +1,32 @@
+{
+  "barang": [
+    {
+      "namaBarang": "sdsd",
+      "hargaBarang": "398",
+      "jumlahBarang": "89",
+      "kadalwarsa": "2023-12-29",
+      "id": 2
+    },
+    {
+      "namaBarang": "syaid",
+      "hargaBarang": "8870",
+      "jumlahBarang": "2923",
+      "kadalwarsa": "2024-01-05",
+      "id": 3
+    },
+    {
+      "namaBarang": "mina sukun",
+      "hargaBarang": "11",
+      "jumlahBarang": "121",
+      "kadalwarsa": "2023-11-30",
+      "id": 4
+    },
+    {
+      "namaBarang": "alfashi",
+      "hargaBarang": "223",
+      "jumlahBarang": "223",
+      "kadalwarsa": "2023-12-13",
+      "id": 5
+    }
+  ]
+}
