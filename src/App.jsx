@@ -15,7 +15,7 @@ import NotFound from "./screen/NotFound";
 function App() {
   const queryClient = new QueryClient();
   const allRoutes = () => {
-    const token = true;
+    const token = false;
     const publicRoutes = [
       {
         path: "/",
