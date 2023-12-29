@@ -8,8 +8,11 @@ import {
 } from "../service/api.service";
 
 //? get all barang
-export const useDataBarang = (endpoinUrl) => {
-  return useQuery("barang", () => getAllData(endpoinUrl));
+export const useDataBarang = (endpoinUrl, pageNumber) => {
+  endpoinUrl = endpoinUrl + `?_limit=2&_page=${pageNumber}`;
+  return useQuery(["barang", endpoinUrl], () => getAllData(endpoinUrl), {
+    keepPreviousData: true,
+  });
 };
 
 // ? get satu barang

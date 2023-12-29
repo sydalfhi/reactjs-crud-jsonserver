@@ -3,6 +3,7 @@ import { useAddDataBarang } from "../../../hook/useDataBarang";
 import { useNavigate } from "react-router-dom";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
+import Ilustration from "../../../assets/img/(10).png";
 
 const Create = () => {
   const NamaRef = useRef();
@@ -31,7 +32,7 @@ const Create = () => {
   };
 
   return (
-    <div className="w-full grid grid-cols-2">
+    <div className="w-full grid lg:grid-cols-2 place-items-center">
       <div className="w-full h-screen  grid place-items-center">
         <form method="post w-full " onSubmit={handSubmit}>
           <table className="w-full">
@@ -87,7 +88,9 @@ const Create = () => {
         </form>
       </div>
       <div className="w-full  h-screen grid place-items-center">
-        <div className="w-[50%] aspect-square rounded-lg bg-gray-500 "></div>
+        <div className="relative w-full  lg:mt-0">
+          <img className="lg:mx-auto max-w-lg" src={Ilustration} alt="" />
+        </div>
       </div>
     </div>
   );

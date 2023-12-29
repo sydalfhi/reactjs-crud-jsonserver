@@ -8,11 +8,26 @@ import {
   useDataBarang,
   useDeleteDataBarang,
 } from "../../../hook/useDataBarang";
+import { useState } from "react";
 
 function UserTabel() {
+  const [pageNumber, setPageNumber] = useState(1);
   const endpoin = "/barang";
-  const { data, isLoading, isError, error, refetch } = useDataBarang(endpoin);
+  const { data, isLoading, isError, error, refetch } = useDataBarang(
+    endpoin,
+    pageNumber
+  );
   const { mutate: hapusData } = useDeleteDataBarang();
+
+  const handlePiginateClick = (type) => {
+    if (type == "plus") {
+      setPageNumber(pageNumber + 1);
+    } else if (type == "min") {
+      setPageNumber(pageNumber - 1);
+    } else {
+      throw new Error();
+    }
+  };
 
   if (isLoading) return <Isloading />;
   if (isError) return <h1>{error.massage}</h1>;
@@ -23,8 +38,8 @@ function UserTabel() {
     refetch();
   }
   return (
-    <section className="grid grid-cols-8">
-      <div className="col-span-2  w-64">
+    <section className="grid lg:grid-cols-8">
+      <div className="hidden lg:block lg:col-span-2  w-64">
         <Sidebar />
       </div>
       <div className="container px-4 justify-self-center mx-auto w-full flex justify-center  col-span-5">
@@ -76,10 +91,10 @@ function UserTabel() {
                     {/* tidak loading dan looping data */}
                     {isLoading || (
                       <tbody className="bg-white divide-y divide-gray-200">
-                        {data?.data.map((item, index) => (
+                        {data?.data.map((item) => (
                           <tr className=" capitalize text-center" key={item.id}>
                             <td className="py-2" scope="col">
-                              {index + 1}
+                              {item.id}
                             </td>
                             <td className="py-2" scope="col">
                               {item.namaBarang ? item.namaBarang : "-"}
@@ -143,7 +158,11 @@ function UserTabel() {
             </div>
           </div>
           <div className="flex items-center justify-between mt-6">
-            <button href="#" className="button__prev__table">
+            <button
+              className="button__prev__table  disabled:cursor-not-allowed"
+              onClick={() => handlePiginateClick("min")}
+              disabled={pageNumber === 1}
+            >
               <img src={PrevIcon} alt="prev" className="w-5" />
               <span>previous</span>
             </button>
@@ -167,13 +186,13 @@ function UserTabel() {
                 3
               </a>
             </div>
-            <a
-              href="#"
-              className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800"
+            <button
+              onClick={() => handlePiginateClick("plus")}
+              className="button__prev__table"
             >
               <span>Next</span>
               <img src={PrevIcon} alt="prev" className="w-5 rotate-180" />
-            </a>
+            </button>
           </div>
         </div>
       </div>
